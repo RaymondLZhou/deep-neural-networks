@@ -2,13 +2,13 @@ import cv2
 import numpy as np
 import pandas as pd
 
-img = cv2.imread('../images/colours.jpg')
+img = cv2.imread('../../images/colours.jpg')
 
 clicked = False
 r = g = b = xpos = ypos = 0
 
 index=["color", "color_name", "hex", "R", "G", "B"]
-csv = pd.read_csv('../data/colours.csv', names=index, header=None)
+csv = pd.read_csv('../../data/colours.csv', names=index, header=None)
 
 def getColorName(R,G,B):
     minimum = 10000
