@@ -17,12 +17,28 @@ tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
 tfidf_train = tfidf_vectorizer.fit_transform(x_train) 
 tfidf_test = tfidf_vectorizer.transform(x_test)
 
-pac=PassiveAggressiveClassifier(max_iter=50)
-pac.fit(tfidf_train,y_train)
+pac = PassiveAggressiveClassifier(max_iter=50)
+pac.fit(tfidf_train, y_train)
 
 y_pred = pac.predict(tfidf_test)
-score = accuracy_score(y_test,y_pred)
 
-print(f'Accuracy: {round(score*100,2)}%')
+confusionMatrix = confusion_matrix(y_test, y_pred, labels=['REAL', 'FAKE'])
+accuracy = accuracy_score(y_test, y_pred)
 
-confusion_matrix(y_test, y_pred, labels=['FAKE', 'REAL'])
+print(confusionMatrix)
+positives = confusionMatrix[0]
+negatives = confusionMatrix[1]
+
+tp, fn = positives
+fp, tn = negatives
+
+print(tp)
+print(fp)
+print(fn)
+print(tn)
+
+prec = tp/(tp+fp)
+rec = tp/(tp+fn)
+
+f1 = 2*prec*rec/(prec+rec)
+print(prec, rec, f1)
