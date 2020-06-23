@@ -1,7 +1,7 @@
 # Fake News Detection and Colour Detection
 
-* [Fake news detection](fake-news-detection) using scikit-learn 
-* [Colour detection](colour-detection) using OpenCV
+* [Fake news detection](#fake-news-detection) using scikit-learn 
+* [Colour detection](#colour-detection) using OpenCV
 
 ## Fake News Detection
 
@@ -16,9 +16,11 @@ The following Python libraries are required
 
 ### Running
 
-* Navigate to the src directory with ```cd src```
+* Navigate to the directory with ```cd src``` and ```cd fakeNews```
 
-* Run ```python fakeNews.py ``` to train a classifier on fake news data. It will report the accuracy, precision, recall, and f1 score
+* Run ```python fakeNews.py``` to train a classifier on fake news data. It will report the confusion matrix, accuracy, precision, recall, and f1 score.
+
+
 
 ## Colour Detection
 
@@ -33,9 +35,11 @@ The following Python libraries are required
 
 ### Running
 
-* Navigate to the src directory with ```cd src```
+* Navigate to the directory with ```cd src``` and ```cd colourDetection```
 
 * Run ```python colourDetection.py ``` to open up an image. Double click to display the RGB values and name of closest colour. Press esc to exit.
+
+
 
 ## License
 
