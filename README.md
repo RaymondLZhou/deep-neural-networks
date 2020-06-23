@@ -20,7 +20,7 @@ The following Python libraries are required
 
 * Run ```python fakeNews.py``` to train a classifier on fake news data. It will report the confusion matrix, accuracy, precision, recall, and f1 score.
 
-
+![image](images/image.png)
 
 ## Colour Detection
 
@@ -39,7 +39,7 @@ The following Python libraries are required
 
 * Run ```python colourDetection.py ``` to open up an image. Double click to display the RGB values and name of closest colour. Press esc to exit.
 
-
+![image](images/image1.png)
 
 ## License
 
