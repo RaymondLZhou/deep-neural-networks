@@ -9,7 +9,3 @@ def compute_cost(AL, Y):
     assert(cost.shape == ())
     
     return cost
-
-Y = np.asarray([[1, 1, 0]])
-AL = np.array([[.8,.9,0.4]])
-print("cost = " + str(compute_cost(AL, Y)))
