@@ -1,6 +1,7 @@
 import numpy as np
 
 def initialize_parameters_deep(layer_dims):
+    np.random.seed(3)
     parameters = {}
     L = len(layer_dims)
 
