@@ -1,7 +1,6 @@
 import numpy as np
 
 def initialize_parameters_deep(layer_dims):
-    np.random.seed(3)
     parameters = {}
     L = len(layer_dims)
 
@@ -13,9 +12,3 @@ def initialize_parameters_deep(layer_dims):
         assert(parameters['b' + str(l)].shape == (layer_dims[l], 1))
    
     return parameters
-
-parameters = initialize_parameters_deep([5,4,3])
-print("W1 = " + str(parameters["W1"]))
-print("b1 = " + str(parameters["b1"]))
-print("W2 = " + str(parameters["W2"]))
-print("b2 = " + str(parameters["b2"]))
