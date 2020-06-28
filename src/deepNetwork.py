@@ -3,28 +3,12 @@ import h5py
 import matplotlib.pyplot as plt
 
 import load
+import predict
 import initialize
 import forward
 import cost
 import backward
 import update
-
-def predict(X, y, parameters):
-    m = X.shape[1]
-    n = len(parameters) // 2
-    p = np.zeros((1,m))
-    
-    probas, caches = forward.L_model_forward(X, parameters)
-
-    for i in range(0, probas.shape[1]):
-        if probas[0,i] > 0.5:
-            p[0,i] = 1
-        else:
-            p[0,i] = 0
-
-    print("Accuracy: "  + str(np.sum((p == y)/m)))
-        
-    return p
 
 def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 3001, print_cost = False):
     costs = []
@@ -64,5 +48,5 @@ layers_dims = [12288, 20, 7, 5, 1]
 
 parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=1501, print_cost=True)
 
-pred_train = predict(train_x, train_y, parameters)
-pred_test = predict(test_x, test_y, parameters)
+pred_train = predict.predict(train_x, train_y, parameters, "Training")
+pred_test = predict.predict(test_x, test_y, parameters, "Testing")
