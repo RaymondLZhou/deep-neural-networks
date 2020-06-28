@@ -1,4 +1,5 @@
 import numpy as np
+import forward
 
 def predict(X, y, parameters, dataset):
     m = X.shape[1]
