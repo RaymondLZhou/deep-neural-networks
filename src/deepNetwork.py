@@ -11,7 +11,7 @@ import backward
 import update
 
 def L_layer_model(X, Y, layers_dims, learning_rate = 0.0075, num_iterations = 3001, print_cost = False):
-    lambd = 0.7
+    lambd = 1
     costs = []
     parameters = initialize.initialize_parameters_deep(layers_dims)
 
@@ -45,9 +45,9 @@ test_x_flatten = test_x_orig.reshape(test_x_orig.shape[0], -1).T
 train_x = train_x_flatten/255
 test_x = test_x_flatten/255
 
-layers_dims = [12288, 20, 7, 5, 1]
+layers_dims = [12288, 64, 16, 16, 1]
 
-parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=3001, print_cost=True)
+parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=1501, print_cost=True)
 
 pred_train = predict.predict(train_x, train_y, parameters, "Training")
 pred_test = predict.predict(test_x, test_y, parameters, "Testing")
