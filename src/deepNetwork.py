@@ -46,7 +46,7 @@ test_x = test_x_flatten/255
 
 layers_dims = [12288, 20, 7, 5, 1]
 
-parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=1501, print_cost=True)
+parameters = L_layer_model(train_x, train_y, layers_dims, num_iterations=2001, print_cost=True)
 
 pred_train = predict.predict(train_x, train_y, parameters, "Training")
 pred_test = predict.predict(test_x, test_y, parameters, "Testing")
