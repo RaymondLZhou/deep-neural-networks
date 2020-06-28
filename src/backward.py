@@ -1,11 +1,11 @@
 import numpy as np
 import activate
 
-def linear_backward(dZ, cache):
+def linear_backward(dZ, cache, lambd):
     A_prev, W, b = cache
     m = A_prev.shape[1]
 
-    dW = 1/m*np.dot(dZ, A_prev.T)
+    dW = 1/m*np.dot(dZ, A_prev.T) + lambd/m*W 
     db = 1/m*np.sum(dZ, axis=1, keepdims=True)
     dA_prev = np.dot(W.T, dZ)
     
@@ -15,20 +15,20 @@ def linear_backward(dZ, cache):
     
     return dA_prev, dW, db
 
-def linear_activation_backward(dA, cache, activation):
+def linear_activation_backward(dA, cache, activation, lambd):
     linear_cache, activation_cache = cache
     
     if activation == "relu":
         dZ = activate.relu_backward(dA, activation_cache)
-        dA_prev, dW, db = linear_backward(dZ, linear_cache)
+        dA_prev, dW, db = linear_backward(dZ, linear_cache, lambd)
         
     elif activation == "sigmoid":
         dZ = activate.sigmoid_backward(dA, activation_cache)
-        dA_prev, dW, db = linear_backward(dZ, linear_cache)
+        dA_prev, dW, db = linear_backward(dZ, linear_cache, lambd)
     
     return dA_prev, dW, db
 
-def L_model_backward(AL, Y, caches):
+def L_model_backward(AL, Y, caches, lambd):
     grads = {}
     L = len(caches)
     m = AL.shape[1]
@@ -37,11 +37,11 @@ def L_model_backward(AL, Y, caches):
     dAL = - (np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))
 
     current_cache = caches[L-1]
-    grads["dA" + str(L-1)], grads["dW" + str(L)], grads["db" + str(L)] = linear_activation_backward(dAL, current_cache, 'sigmoid')
+    grads["dA" + str(L-1)], grads["dW" + str(L)], grads["db" + str(L)] = linear_activation_backward(dAL, current_cache, 'sigmoid', lambd)
 
     for l in reversed(range(L-1)):
         current_cache = caches[l]
-        dA_prev_temp, dW_temp, db_temp = linear_activation_backward(grads["dA" + str(l + 1)], current_cache, 'relu')
+        dA_prev_temp, dW_temp, db_temp = linear_activation_backward(grads["dA" + str(l + 1)], current_cache, 'relu', lambd)
         grads["dA" + str(l)] = dA_prev_temp
         grads["dW" + str(l + 1)] = dW_temp
         grads["db" + str(l + 1)] = db_temp
