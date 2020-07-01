@@ -58,7 +58,7 @@ val_data_gen = validation_image_generator.flow_from_directory(batch_size=batch_s
 sample_training_images, _ = next(train_data_gen)
 
 def plotImages(images_arr):
-    fig, axes = plt.subplots(1, 5, figsize=(20,20))
+    fig, axes = plt.subplots(1, 6, figsize=(20,20))
     axes = axes.flatten()
     for img, ax in zip( images_arr, axes):
         ax.imshow(img)
@@ -67,3 +67,19 @@ def plotImages(images_arr):
     plt.show()
 
 plotImages(sample_training_images[:6])
+
+model = Sequential([
+    Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH ,3)),
+    MaxPooling2D(),
+    Conv2D(32, 3, padding='same', activation='relu'),
+    MaxPooling2D(),
+    Conv2D(64, 3, padding='same', activation='relu'),
+    MaxPooling2D(),
+    Flatten(),
+    Dense(512, activation='relu'),
+    Dense(1)
+])
+
+model.compile(optimizer='adam', loss=tf.keras.losses.BinaryCrossentropy(from_logits=True), metrics=['accuracy'])
+
+model.summary()
