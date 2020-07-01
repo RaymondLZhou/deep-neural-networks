@@ -27,16 +27,43 @@ num_dogs_val = len(os.listdir(validation_dogs_dir))
 total_train = num_cats_tr + num_dogs_tr
 total_val = num_cats_val + num_dogs_val
 
-print('total training cat images:', num_cats_tr)
-print('total training dog images:', num_dogs_tr)
+print('Total training cat images:', num_cats_tr)
+print('Total training dog images:', num_dogs_tr)
 
-print('total validation cat images:', num_cats_val)
-print('total validation dog images:', num_dogs_val)
+print('Total validation cat images:', num_cats_val)
+print('Total validation dog images:', num_dogs_val)
 
-print("total training images:", total_train)
-print("total validation images:", total_val)
+print('Total training images:', total_train)
+print('Total validation images:', total_val)
 
 batch_size = 128
 epochs = 15
 IMG_HEIGHT = 150
 IMG_WIDTH = 150
+
+train_image_generator = ImageDataGenerator(rescale=1./255)
+validation_image_generator = ImageDataGenerator(rescale=1./255)
+
+train_data_gen = train_image_generator.flow_from_directory(batch_size=batch_size,
+                                                           directory=train_dir,
+                                                           shuffle=True,
+                                                           target_size=(IMG_HEIGHT, IMG_WIDTH),
+                                                           class_mode='binary')
+
+val_data_gen = validation_image_generator.flow_from_directory(batch_size=batch_size,
+                                                              directory=validation_dir,
+                                                              target_size=(IMG_HEIGHT, IMG_WIDTH),
+                                                              class_mode='binary')
+
+sample_training_images, _ = next(train_data_gen)
+
+def plotImages(images_arr):
+    fig, axes = plt.subplots(1, 5, figsize=(20,20))
+    axes = axes.flatten()
+    for img, ax in zip( images_arr, axes):
+        ax.imshow(img)
+        ax.axis('off')
+    plt.tight_layout()
+    plt.show()
+
+plotImages(sample_training_images[:6])
