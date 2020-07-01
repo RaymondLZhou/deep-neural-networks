@@ -1,3 +1,3 @@
 # Deep Neural Networks
 
-Machine learning using a deep neural network. Currently in progress.
+Image classification using deep convolutional neural networks (CNN). Currently in progress.
