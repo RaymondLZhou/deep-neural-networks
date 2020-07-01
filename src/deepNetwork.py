@@ -52,7 +52,6 @@ def convert_to_one_hot(Y, C):
     Y = np.eye(C)[Y.reshape(-1)].T
     return Y
 
-
 def predict(X, parameters):
     W1 = tf.convert_to_tensor(parameters["W1"])
     b1 = tf.convert_to_tensor(parameters["b1"])
@@ -138,7 +137,6 @@ def compute_cost(Z3, Y):
 
 def model(X_train, Y_train, X_test, Y_test, learning_rate = 0.0001, num_epochs = 1500, minibatch_size = 32, print_cost = True):
     ops.reset_default_graph()
-    tf.set_random_seed(1)
     seed = 3
     (n_x, m) = X_train.shape
     n_y = Y_train.shape[0]
@@ -160,7 +158,6 @@ def model(X_train, Y_train, X_test, Y_test, learning_rate = 0.0001, num_epochs =
         sess.run(init)
 
         for epoch in range(num_epochs):
-
             epoch_cost = 0
             num_minibatches = int(m / minibatch_size)
             seed = seed + 1

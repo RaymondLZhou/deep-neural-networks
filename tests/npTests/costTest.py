@@ -1,7 +1,7 @@
 import numpy as np
 import sys
 
-sys.path.insert(0, '../src/lowLevel/')
+sys.path.insert(0, '../../src/npNetwork/')
 
 import cost
 
