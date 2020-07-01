@@ -1,4 +1,5 @@
 import sys
+import tensorflow as tf
 
 sys.path.insert(0, '../../src/tfNetwork/')
 
