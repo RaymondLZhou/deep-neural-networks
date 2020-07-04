@@ -22,8 +22,8 @@ IMG_WIDTH = 150
 
 train_data_gen, val_data_gen = plotImage.createImageSet(train_dir, validation_dir, batch_size, IMG_HEIGHT, IMG_WIDTH)
 
-model_new = Sequential([
-    Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH ,3)),
+model = Sequential([
+    Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
     MaxPooling2D(),
     Dropout(0.2),
     Conv2D(32, 3, padding='same', activation='relu'),
@@ -36,14 +36,14 @@ model_new = Sequential([
     Dense(1)
 ])
 
-model_new.compile(optimizer='adam',
+model.compile(optimizer='adam',
                   loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
                   metrics=['accuracy'])
 
-model_new.summary()
-plot_model(model_new, to_file='../../images/model.png', show_shapes=True, show_layer_names=True)
+model.summary()
+plot_model(model, to_file='../../images/model.png', show_shapes=True, show_layer_names=True)
 
-history = model_new.fit_generator(
+history = model.fit_generator(
     train_data_gen,
     steps_per_epoch=total_train // batch_size,
     epochs=epochs,
