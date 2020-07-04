@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 def plotImages(images_arr):
     fig, axes = plt.subplots(1, 5, figsize=(20,20))
@@ -16,7 +17,7 @@ def plotImageSet(train_data_gen):
     augmented_images = [train_data_gen[0][0][1] for i in range(5)]
     plotImages(augmented_images)  
 
-def createImageSet(train_dir, validation_dir):
+def createImageSet(train_dir, validation_dir, batch_size, IMG_HEIGHT, IMG_WIDTH):
     image_gen_train = ImageDataGenerator(
                         rescale=1./255,
                         rotation_range=45,
