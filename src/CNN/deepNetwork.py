@@ -3,6 +3,7 @@ import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.utils import plot_model
 
 import processData
 import plotImage
@@ -40,6 +41,7 @@ model_new.compile(optimizer='adam',
                   metrics=['accuracy'])
 
 model_new.summary()
+plot_model(model_new, to_file='../../images/model.png', show_shapes=True, show_layer_names=True)
 
 history = model_new.fit_generator(
     train_data_gen,
