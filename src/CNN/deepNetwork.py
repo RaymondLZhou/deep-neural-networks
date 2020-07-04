@@ -15,8 +15,8 @@ train_dir, validation_dir, train_cats_dir, train_dogs_dir, validation_cats_dir, 
 
 total_train, total_val = processData.dataSize(train_cats_dir, train_dogs_dir, validation_cats_dir, validation_dogs_dir)
 
-batch_size = 128
-epochs = 15
+batch_size = 64
+epochs = 21
 IMG_HEIGHT = 150
 IMG_WIDTH = 150
 
