@@ -1,7 +1,7 @@
 import tensorflow as tf
 
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, Dropout, MaxPooling2D, BatchNormalization, Activation
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.utils import plot_model
 
@@ -16,23 +16,31 @@ train_dir, validation_dir, train_cats_dir, train_dogs_dir, validation_cats_dir, 
 total_train, total_val = processData.dataSize(train_cats_dir, train_dogs_dir, validation_cats_dir, validation_dogs_dir)
 
 batch_size = 80
-epochs = 21
+epochs = 26
 IMG_HEIGHT = 150
 IMG_WIDTH = 150
 
 train_data_gen, val_data_gen = plotImage.createImageSet(train_dir, validation_dir, batch_size, IMG_HEIGHT, IMG_WIDTH)
 
 model = Sequential([
-    Conv2D(16, 3, padding='same', activation='relu', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    Conv2D(16, 3, padding='same', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    BatchNormalization(),
+    Activation(),
     MaxPooling2D(),
     Dropout(0.2),
-    Conv2D(32, 3, padding='same', activation='relu'),
+    Conv2D(32, 3, padding='same'),
+    BatchNormalization(),
+    Activation(),
     MaxPooling2D(),
-    Conv2D(64, 3, padding='same', activation='relu'),
+    Conv2D(64, 3, padding='same'),
+    BatchNormalization(),
+    Activation(),
     MaxPooling2D(),
     Dropout(0.2),
     Flatten(),
-    Dense(512, activation='relu'),
+    Dense(512),
+    BatchNormalization(),
+    Activation(),
     Dense(1)
 ])
 
