@@ -43,7 +43,7 @@ model.compile(optimizer='adam',
 model.summary()
 plot_model(model, to_file='../../images/model.png', show_shapes=True, show_layer_names=True)
 
-history = model.fit_generator(
+history = model.fit(
     train_data_gen,
     steps_per_epoch=total_train // batch_size,
     epochs=epochs,
