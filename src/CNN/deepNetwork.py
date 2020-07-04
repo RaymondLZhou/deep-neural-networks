@@ -23,24 +23,22 @@ IMG_WIDTH = 150
 train_data_gen, val_data_gen = plotImage.createImageSet(train_dir, validation_dir, batch_size, IMG_HEIGHT, IMG_WIDTH)
 
 model = Sequential([
-    Conv2D(16, 3, padding='same', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+    Conv2D(16, 3, padding='same', kernel_initializer='he_uniform', input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
     BatchNormalization(),
-    Activation(),
+    Activation('relu'),
     MaxPooling2D(),
     Dropout(0.2),
-    Conv2D(32, 3, padding='same'),
+    Conv2D(32, 3, padding='same', kernel_initializer='he_uniform'),
     BatchNormalization(),
-    Activation(),
+    Activation('relu'),
     MaxPooling2D(),
-    Conv2D(64, 3, padding='same'),
+    Conv2D(64, 3, padding='same', kernel_initializer='he_uniform'),
     BatchNormalization(),
-    Activation(),
+    Activation('relu'),
     MaxPooling2D(),
     Dropout(0.2),
     Flatten(),
-    Dense(512),
-    BatchNormalization(),
-    Activation(),
+    Dense(512, activation='relu', kernel_initializer='he_uniform'),
     Dense(1)
 ])
 
