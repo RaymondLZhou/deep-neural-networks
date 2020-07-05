@@ -1,6 +1,20 @@
 # Deep Neural Networks
 
-Image classification using [deep convolutional neural networks (CNN)](src/CNN). Work in progress.
+Image classification using [deep convolutional neural networks (CNN)](src/CNN). Work in progress. Main file is [deepNetwork.py](src/CNN/deepNetwork.py).
+
+### Data Augmentation
+
+![augmented](images/augmented.png)
+
+### Model Summary
+
+![summary](images/summary.png)
+
+### Model Visualization
+
+![model](images/model.png)
+
+### Model Performance
 
 ## Previous work 
 * Deep neural network with [TensorFlow implementation](src/tfNetwork). Main file is [deepNetwork.py](src/tfNetwork/deepNetwork.py).
