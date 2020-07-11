@@ -1,12 +1,15 @@
 # Deep Neural Networks
 
+Collection of machine learning projects. 
+
 * [Image classification](#image-classification) using Keras and TensorFlow
 * [Fake news detection](#fake-news-detection) using scikit-learn 
 * [Colour detection](#colour-detection) using OpenCV
+* [Neural networks](#neural-networks) using high-level TensorFlow implementation and low-level NumPy implementation
 
 ## Image Classification
 
-Image classification using [deep convolutional neural networks (CNN)](src/CNN). The code is at [src/CNN](src/CNN), and the main file is [deepNetwork.py](src/CNN/deepNetwork.py).
+Image classification using a deep convolutional neural networks (CNN). The code is at [src/CNN](src/CNN), and the main file is [deepNetwork.py](src/CNN/deepNetwork.py).
 
 ### Data Augmentation
 
@@ -24,13 +27,9 @@ Image classification using [deep convolutional neural networks (CNN)](src/CNN). 
 
 ![performance](images/performance.png)
 
-## Previous work 
-* Deep neural network with [TensorFlow implementation](src/tfNetwork). Main file is [deepNetwork.py](src/tfNetwork/deepNetwork.py).
-* Deep neural network with [NumPy implementation](src/npNetwork). Main file is [deepNetwork.py](src/npNetwork/deepNetwork.py).
-
 ## Fake News Detection
 
-Trains classifier from fake news data and reports testing accuracy. The code is at [src/fakeNews](src/fakeNews), and the main file is [src/fakeNews/fakeNews.py](src/fakeNews/fakeNews.py).
+Trains classifier from fake news data and reports testing accuracy. The code is at [src/fakeNews](src/fakeNews), and the main file is [fakeNews.py](src/fakeNews/fakeNews.py).
 
 ### Prerequisites
 
@@ -49,7 +48,7 @@ The following Python libraries are required
 
 ## Colour Detection
 
-Displays colours name and RGB values of clicked pixels. The code is at [src/colourDetection](src/colourDetection), and the main file is [src/colourDetection/colourDetection.py](src/colourDetection/colourDetection.py).
+Displays colours name and RGB values of clicked pixels. The code is at [src/colourDetection](src/colourDetection), and the main file is [colourDetection.py](src/colourDetection/colourDetection.py).
 
 ### Prerequisites
 
@@ -65,6 +64,11 @@ The following Python libraries are required
 * Run ```python colourDetection.py ``` to open up an image. Double click to display the RGB values and name of closest colour. Press esc to exit.
 
 ![image](images/image1.png)
+
+## Neural Networks
+
+* Deep neural network with [TensorFlow implementation](src/tfNetwork). Main file is [deepNetwork.py](src/tfNetwork/deepNetwork.py).
+* Deep neural network with [NumPy implementation](src/npNetwork). Main file is [deepNetwork.py](src/npNetwork/deepNetwork.py).
 
 ## License
 
