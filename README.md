@@ -1,6 +1,6 @@
 # Deep Neural Networks
 
-Collection of machine learning projects. 
+Collection of machine learning projects
 
 * [Image classification](#image-classification) using Keras and TensorFlow
 * [Fake news detection](#fake-news-detection) using scikit-learn 
@@ -9,21 +9,39 @@ Collection of machine learning projects.
 
 ## Image Classification
 
-Image classification using a deep convolutional neural networks (CNN). The code is at [src/CNN](src/CNN), and the main file is [deepNetwork.py](src/CNN/deepNetwork.py).
+Trains deep convolutional neural network (CNN) for dogs vs cats classification. The code is at [src/CNN](src/CNN), and the main file is [deepNetwork.py](src/CNN/deepNetwork.py).
+
+### Prerequisites
+
+The following Python libraries are required
+
+* TensorFlow
+* Keras
+* Matplotlib
+
+### Running
+
+* Navigate to the directory with ```cd src``` and ```cd CNN```
+
+* Run ```python deepNetwork.py``` to train a CNN on dogs and cats image data. 
 
 ### Data Augmentation
+
+Horizontal flips, rotations, horizontal and vertical shifts, and zooms.
 
 ![augmented](images/augmented.png)
 
 ### Model Summary
 
-![summary](images/summary.png)
+Convolutional, batch normalization, relu activation, max pooling, dropout, and dense layers.
 
-### Model Visualization
+![summary](images/summary.png)
 
 ![model](images/model.png)
 
 ### Model Performance
+
+Approximately 0.85 on training set and 0.80 on validation set after 500 epochs.
 
 ![performance](images/performance.png)
 
@@ -35,7 +53,7 @@ Trains classifier from fake news data and reports testing accuracy. The code is 
 
 The following Python libraries are required
 
-* scikit-learn
+* Scikit-learn
 * pandas
 
 ### Running
@@ -61,7 +79,7 @@ The following Python libraries are required
 
 * Navigate to the directory with ```cd src``` and ```cd colourDetection```
 
-* Run ```python colourDetection.py ``` to open up an image. Double click to display the RGB values and name of closest colour. Press esc to exit.
+* Run ```python colourDetection.py``` to open up an image. Double click to display the RGB values and name of closest colour. Press esc to exit.
 
 ![image](images/image1.png)
 
